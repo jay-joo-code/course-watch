@@ -1,21 +1,22 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 //import {} from './../redux/actions';
-import Counter from './Counter';
+import Header from './Header/Header';
 
 class Home extends React.Component {
     render() {
         return (
-            <div className="container">
-                <Counter />
+            <div className="container-fluid">
+                <Header />
+                
             </div>
-            )
+        )
     }
 }
 
 const stateToProps = (state) => {
     return {
-        
+
     }
 }
 

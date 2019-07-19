@@ -1,17 +1,12 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 const user = (state = null, action) => {
+    console.log('reducer user')
     switch (action.type) {
-        default:
-            return state;
-    }
-}
-
-const count = (state = 0, action) => {
-    switch (action.type) {
-        case "UPDATE_COUNT":
+        case "UPDATE_USER":
+            console.log(action.payload)
             return action.payload;
-        
+
         default:
             return state;
     }
@@ -21,7 +16,7 @@ const device = (state = "desktop", action) => {
     switch (action.type) {
         case "UPDATE_DEVICE":
             return action.payload;
-        
+
         default:
             return state;
     }
@@ -29,6 +24,5 @@ const device = (state = "desktop", action) => {
 
 export default combineReducers({
     user,
-    count,
     device,
 })

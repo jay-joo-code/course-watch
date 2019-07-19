@@ -5,8 +5,14 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-// TODO: insert firebase config
 var firebaseConfig = {
+    apiKey: "AIzaSyD9yCkVyKEhUvoMtfqpGYTkg6ox0PxZo8g",
+    authDomain: "cornell-course-watch.firebaseapp.com",
+    databaseURL: "https://cornell-course-watch.firebaseio.com",
+    projectId: "cornell-course-watch",
+    storageBucket: "",
+    messagingSenderId: "963179578048",
+    appId: "1:963179578048:web:309105f9e46f177f"
 };
     
 // Initialize Firebase
