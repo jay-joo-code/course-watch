@@ -7,7 +7,7 @@ import Account from './Account';
 class Header extends React.Component {
     render() {
         return (
-            <div className="container pt-5 pr-5 pl-5">
+            <div className="container pt-5 ">
                 <div className="d-flex flex-row justify-content-between">
                     <Logo />
                     <Account />

@@ -1,4 +1,6 @@
 import firebase from './firebase';
+import axios from 'axios';
+const apiKey = 'bhgUdojxeHEXdFOU';
 
 export const updateDevice = (width) => {
     //console.log('update device width:', width);
@@ -35,10 +37,28 @@ export const attemptGoogleSignIn = () => {
 }
 
 export const attemptGoogleSignOut = () => {
-    const request = firebase.auth().signOut();
+    firebase.auth().signOut();
     
     return {
         type: "UPDATE_USER",
         payload: null
     }
 }
+
+export const setError = (errorMsg) => {
+    return {
+        type: "SET_ERROR",
+        payload: errorMsg
+    }
+}
+
+export const addWatch = (netID, classNumber) => {
+    const url = `https://coursealert-api.herokuapp.com/api/addWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`
+    const request = axios.get(url)
+    
+    return {
+        type: "ADD_WATCH",
+        payload: request
+    }
+}
+
