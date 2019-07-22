@@ -4,8 +4,14 @@ const user = (state = null, action) => {
     //console.log('reducer user')
     switch (action.type) {
         case "UPDATE_USER":
-            console.log(action.payload)
-            return action.payload;
+            //console.log(action.payload)
+            if (action.payload && !action.payload.user) {
+                // login unsuccessful
+                return null
+            }
+            else {
+                return action.payload;
+            }
 
         default:
             return state;
@@ -28,9 +34,12 @@ const error = (state = "", action) => {
             return action.payload;
 
         case "ADD_WATCH":
-            if (action.payload.response && action.payload.response.status == 500) {
+            if (action.payload.response && action.payload.response.status === 500) {
                 //console.log('error', action.payload.response.data)
                 return action.payload.response.data
+            }
+            else {
+                return state;
             }
 
         default:
@@ -38,22 +47,30 @@ const error = (state = "", action) => {
     }
 }
 
-const watches = (state = [], action) => {
+const watches = (state = { isFetching: false, watching: [] }, action) => {
     switch (action.type) {
-        case "ADD_WATCH":
-            //console.log(action.payload.response)
-            if (action.payload.response && action.payload.response.status == 500) {
-                //console.log('error', action.payload.response.data)
-                return state
-            }
-            else if (action.payload.data && action.payload.data.data) {
-                const newWatches = [...state];
-                newWatches.push(action.payload.data.data)
-                //console.log('newwatches', newWatches)
-                return newWatches
-            }
-            return state;
+        case "REQUEST_WATCHES":
+            return Object.assign({}, state, {
+                isFetching: true
+            });
 
+        case "RECEIVE_WATCHES":
+            console.log('Receive watches', action.payload)
+            var watching = [];
+            if (action.payload && action.payload.data && action.payload.data.watching) {
+                watching = action.payload.data.watching
+            }
+            return Object.assign({}, state, {
+                isFetching: false,
+                watching,
+            })
+        
+        case "CLEAR_WATCHES":
+            return Object.assign({}, state, {
+                isFetching: false,
+                watching: []
+            })
+            
         default:
             return state;
     }

@@ -18,15 +18,22 @@ class ClassNumberInput extends React.Component {
         //console.log(`attempt submit: ${this.state.inputValue}`)
 
         if (isNaN(this.state.inputValue)) {
-            //console.log('error: not a number')
+            // input not a number
             this.props.setError('Course ID must be a number')
         }
-        else if (process.env.NODE_ENV == 'production' && !this.props.user) {
+        else if (this.state.inputValue === "") {
+            // input empty
+            this.props.setError('Enter a Course ID to watch a course')
+        }
+        else if (process.env.NODE_ENV === 'production' && !this.props.user) {
             this.props.setError('Sign In to watch courses')
         }
         else {
-            //console.log(`adding ${this.state.inputValue} to watch`)
-            this.props.addWatch('jj534', this.state.inputValue)
+            // reset input
+            this.setState({inputValue: ""});
+            const netID = "jj534"
+            // add watch
+            this.props.addWatch(netID, this.state.inputValue)
         }
     }
 

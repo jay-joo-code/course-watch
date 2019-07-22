@@ -25,23 +25,34 @@ export const updateDevice = (width) => {
     }
 }
 
-export const attemptGoogleSignIn = () => {
-    console.log('action attemptGoogleSignIn')
-    var provider = new firebase.auth.GoogleAuthProvider();
-    const request = firebase.auth().signInWithPopup(provider);
-
+export const updateUser = (user) => {
     return {
         type: "UPDATE_USER",
-        payload: request
+        payload: user
     }
 }
 
+export const attemptGoogleSignIn = () => {
+    return dispatch => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        return firebase.auth().signInWithPopup(provider)
+            .then((response) => {
+                dispatch(updateUser(response))
+                console.log('sign in attempt response', response)
+                if (response && response.user) {
+                    console.log('dispatch fetchWatches')
+                    const email = response.user.email;
+                    const netID = email.substring(0, email.indexOf("@"));
+                    dispatch(fetchWatches(netID))
+                }
+            })
+    } 
+}
+
 export const attemptGoogleSignOut = () => {
-    firebase.auth().signOut();
-    
-    return {
-        type: "UPDATE_USER",
-        payload: null
+    return dispatch => {
+        return firebase.auth().signOut()
+            .then(response => dispatch(updateUser(null)))
     }
 }
 
@@ -52,13 +63,57 @@ export const setError = (errorMsg) => {
     }
 }
 
-export const addWatch = (netID, classNumber) => {
-    const url = `https://coursealert-api.herokuapp.com/api/addWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`
-    const request = axios.get(url)
-    
+export const requestWatches = () => {
     return {
-        type: "ADD_WATCH",
-        payload: request
+        type: "REQUEST_WATCHES",
+        payload: null
     }
 }
 
+export const clearWatches = () => {
+    return {
+        type: "CLEAR_WATCHES",
+        payload: null
+    }
+}
+
+export const receiveWatches = (data) => {
+    return {
+        type: "RECEIVE_WATCHES",
+        payload: data
+    }
+}
+
+export const fetchWatches = (netID) => {
+    return (dispatch) => {
+        dispatch(requestWatches())
+        
+        const url = `https://coursealert-api.herokuapp.com/db/user?apiKey=${apiKey}&netID=${netID}`;
+        
+        return axios.get(url)
+            .then(response => dispatch(receiveWatches(response)))
+        
+    }
+}
+
+export const addWatch = (netID, classNumber) => {
+    return (dispatch) => {
+        const url = `https://coursealert-api.herokuapp.com/api/addWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`;
+        
+        return axios.get(url)
+            .then((response) => {
+                dispatch(fetchWatches(netID))
+            })
+    }
+}
+
+export const removeWatch = (netID, classNumber) => {
+    return (dispatch) => {
+        const url = `https://coursealert-api.herokuapp.com/api/removeWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`;
+        
+        return axios.get(url)
+            .then((response) => {
+                dispatch(fetchWatches(netID))
+            })
+    }
+}
