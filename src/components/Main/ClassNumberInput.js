@@ -25,7 +25,8 @@ class ClassNumberInput extends React.Component {
             // input empty
             this.props.setError('Enter a Course ID to watch a course')
         }
-        else if (process.env.NODE_ENV === 'production' && !this.props.user) {
+        else if (!this.props.user) {
+            // not logged in
             this.props.setError('Sign In to watch courses')
         }
         else {
@@ -43,11 +44,11 @@ class ClassNumberInput extends React.Component {
 
     render() {
         return (
-            <div className="pt-5 pb-5 ">
-                <form onSubmit={(e) => this.handleFormSubmit(e)}>
-                    <div className="form-group d-flex flex-row">
-                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Course ID" onChange={(e) => this.handleInputChange(e)} />
-                        <button type="submit" className="btn btn-danger">Add</button>
+            <div className="mt-5 pt-5 pb-5 w-100 d-flex flex-column align-items-center">
+                <form className="form-style" onSubmit={(e) => this.handleFormSubmit(e)}>
+                    <div className="form-group d-flex flex-row input-group border-modern-dynamic">
+                        <input type="text" className="form-control input-style" id="exampleFormControlInput1" placeholder="Course ID" onChange={(e) => this.handleInputChange(e)} />
+                        <button type="submit" className="icon-add border-modern-shallow"><i className="fas fa-plus"></i></button>
                     </div>
                 </form>
                 <div>

@@ -1,0 +1,45 @@
+.form-style {
+    width: 60%;
+}
+
+@media (min-width: 768px) { 
+    .form-style {
+        width: 40%;
+    }
+    
+}
+
+.input-group {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    width: 100%;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.input-style {
+    color: white;
+    border: none;
+    outline: 0;
+    background: none;
+    line-height: 40px;
+}
+
+.input-style:focus {
+    box-shadow: none !important;
+}
+
+.icon-add {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: red;
+    background-color: white;
+    border: none;
+    
+}
