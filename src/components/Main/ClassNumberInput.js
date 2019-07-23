@@ -44,7 +44,7 @@ class ClassNumberInput extends React.Component {
 
     render() {
         return (
-            <div className="mt-5 pt-5 pb-5 w-100 d-flex flex-column align-items-center">
+            <div className="mt-5 mb-5 pt-5 pb-5 w-100 d-flex flex-column align-items-center">
                 <form className="form-style" onSubmit={(e) => this.handleFormSubmit(e)}>
                     <div className="form-group d-flex flex-row input-group border-modern-dynamic">
                         <input type="text" className="form-control input-style" id="exampleFormControlInput1" placeholder="Course ID" onChange={(e) => this.handleInputChange(e)} />

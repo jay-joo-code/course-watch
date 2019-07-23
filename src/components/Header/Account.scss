@@ -2,6 +2,7 @@
     background-color: white;
 }
 
+
 .btn img {
     width: 25px;
 }
@@ -15,9 +16,17 @@
     color: black;
 }
 
+.user-info-group p {
+    font-size: 14px;
+    display: none;
+}
+
 @media (min-width: 768px) {
     .btn p {
         display: block;
     }
     
+    .user-info-group p {
+        display: block;
+    }
 }

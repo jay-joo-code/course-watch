@@ -32,8 +32,12 @@ class Account extends React.Component {
         const email = user.email;
         
         return (
-            <div>
-                <Avatar alt="Remy Sharp" src={photo} className="border-modern-shallow" />
+            <div className="d-flex flex-row">
+                <Avatar alt="Remy Sharp" src={photo} className="border-modern-dynamic mr-4" />
+                <div className="user-info-group">
+                    <p className="mb-0 font-weight-light">{name}</p>
+                    <p className="mb-0 font-weight-light text-muted">{email}</p>
+                </div>
             </div>
         )
     }
