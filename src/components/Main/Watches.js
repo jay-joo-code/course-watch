@@ -15,13 +15,12 @@ class Watches extends React.Component {
 
     render() {
         const user = this.props.user;
-        
+
         return (
-            <div>
-            
-            {this.props.watches.watching.map((watch) => {
-                return <Watch key={watch.classNumber} {...watch} />
-            })}
+            <div className="w-100 d-flex flex-column align-items-center">
+                {this.props.watches.watching.map((watch) => {
+                    return <Watch key={watch.classNumber} {...watch} />
+                })}
             </div>
         )
     }

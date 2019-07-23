@@ -42,11 +42,9 @@
     border-radius: 50%;
     color: white;
     background-color: $color-cornell;
-    border: none;
     transition: background-color 300ms ease-in-out;
+    border: none;
 }
-
-.icon-add:hover {
-    background-color: white;
-    color: $color-cornell;
+.icon-add:focus {
+    box-shadow: none !important;
 }

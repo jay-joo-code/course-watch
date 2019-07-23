@@ -1,0 +1,32 @@
+@import './../Core.scss';
+
+.icon-availability {
+    display: block;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.icon-available {
+    background-color: $color-success;
+}
+
+.icon-unavailable {
+    background-color: $color-danger;
+}
+
+.container-watch {
+    height: 80px;
+    width: 100%;
+}
+
+.watch-number {
+    font-size: 12px;
+}
+
+@media (min-width: 768px) { 
+    .container-watch {
+        width: 50%;
+    }
+    
+}
