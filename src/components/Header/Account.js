@@ -2,26 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { attemptGoogleSignIn, attemptGoogleSignOut, clearWatches } from './../../redux/actions';
 //import firebase from './../../redux/firebase';
+import './Account.scss'
+import Avatar from '@material-ui/core/Avatar';
 
 class Account extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.handleSignOut = this.handleSignOut.bind(this);
     }
-    
+
     handleSignOut() {
         this.props.attemptGoogleSignOut();
         this.props.clearWatches();
     }
-    
+
     render() {
         if (!this.props.user) {
-            return <button className="btn btn-primary" onClick={this.props.attemptGoogleSignIn}>Sign In with Google</button>
+            return (
+                <button className="btn border-modern-shallow d-flex flex-row" onClick={this.props.attemptGoogleSignIn}>
+                    <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
+                    <p className="mb-0 ml-2">Sign In with Google</p>
+                </button>
+            )
         }
+        const user = this.props.user.user;
+        const photo = user.photoURL;
+        const name = user.displayName;
+        const email = user.email;
+        
         return (
             <div>
-            <button className="btn btn-danger" onClick={this.handleSignOut}>Sign Out</button>
+                <Avatar alt="Remy Sharp" src={photo} className="border-modern-shallow" />
             </div>
         )
     }

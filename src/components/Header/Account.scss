@@ -1,0 +1,23 @@
+.btn {
+    background-color: white;
+}
+
+.btn img {
+    width: 25px;
+}
+
+.btn p {
+    color: #6c757d;
+    display: none;
+}
+
+.btn:hover p {
+    color: black;
+}
+
+@media (min-width: 768px) {
+    .btn p {
+        display: block;
+    }
+    
+}

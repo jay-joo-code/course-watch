@@ -5,7 +5,8 @@ import Home from './components/Home';
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import DetectDevice from './components/DetectDevice';
-import './components/Core.css';
+import './components/Core.scss';
+
 
 const persistor = persistStore(store);
 

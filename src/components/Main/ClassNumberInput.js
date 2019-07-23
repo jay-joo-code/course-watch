@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setError, addWatch } from './../../redux/actions';
-import './ClassNumberInput.css';
+import './ClassNumberInput.scss';
 
 class ClassNumberInput extends React.Component {
     constructor(props) {
