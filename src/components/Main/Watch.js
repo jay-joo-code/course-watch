@@ -32,7 +32,7 @@ class Watch extends React.Component {
         const iconAvailabilityClass = `icon-availability ${iconColor}`;
         
         return (
-            <div className="border-modern-shallow m-2 bg-white container-watch d-flex flex-row align-items-center">
+            <div className="border-modern-shallow m-2 bg-white container-watch d-flex flex-row align-items-center" onClick={this.handleRemove}>
                 <div className="container-fluid v-100 h-100">
                     <div className="row h-100">
                         <div className="col-1 d-flex justify-content-center align-items-center p-0">
