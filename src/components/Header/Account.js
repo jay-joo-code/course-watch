@@ -20,10 +20,13 @@ class Account extends React.Component {
     render() {
         if (!this.props.user) {
             return (
-                <button className="btn border-modern-shallow d-flex flex-row" onClick={this.props.attemptGoogleSignIn}>
-                    <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
-                    <p className="mb-0 ml-2">Sign In with Google</p>
-                </button>
+                <div className="d-flex flex-row align-items-center justify-content-center">
+                    <button className="btn border-modern-shallow d-flex flex-row" onClick={this.props.attemptGoogleSignIn}>
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" />
+                        <p className="mb-0 ml-2">Sign In with Google</p>
+                    </button>
+                </div>
+                
             )
         }
         const user = this.props.user.user;
@@ -32,13 +35,14 @@ class Account extends React.Component {
         const email = user.email;
         
         return (
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row align-items-center justify-content-center">
                 <Avatar alt="Remy Sharp" src={photo} className="border-modern-dynamic mr-4" onClick={this.handleSignOut} />
                 <div className="user-info-group">
                     <p className="mb-0 font-weight-light">{name}</p>
                     <p className="mb-0 font-weight-light text-muted">{email}</p>
                 </div>
             </div>
+            
         )
     }
 }

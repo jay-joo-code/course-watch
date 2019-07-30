@@ -7,10 +7,13 @@ import Watches from './Watches';
 class Main extends React.Component {
     render() {
         return (
-            <div className="d-flex flex-column align-items-center">
-                <ClassNumberInput />
-                <Watches />
+            <div className="container-fluid">
+                <div className="d-flex flex-column align-items-center">
+                    <ClassNumberInput />
+                    <Watches />
+                </div>
             </div>
+            
             )
     }
 }

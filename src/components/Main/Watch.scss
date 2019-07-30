@@ -18,10 +18,24 @@
 .container-watch {
     height: 80px;
     width: 100%;
+    cursor: pointer;
 }
 
 .watch-number {
     font-size: 12px;
+}
+
+.danger-area {
+    width: 20px;
+    background-color: white;
+    transition: background-color 300ms ease-in-out;
+    
+}
+
+.container-watch:hover {
+    .danger-area {
+        background-color: $color-danger;
+    }
 }
 
 @media (min-width: 768px) { 
