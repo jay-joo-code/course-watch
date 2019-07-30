@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchWatches } from './../../redux/actions';
 import Watch from './Watch';
+import Loading from './Loading';
 
 class Watches extends React.Component {
     componentDidMount() {
@@ -14,14 +15,20 @@ class Watches extends React.Component {
     }
 
     render() {
-        const user = this.props.user;
 
         return (
-            <div className="w-100 d-flex flex-column align-items-center">
-                {this.props.watches.watching.map((watch) => {
-                    return <Watch key={watch.classNumber} {...watch} />
-                })}
+            <div className="w-100 ">
+                <div className="d-flex flex-row justify-content-center">
+                    <Loading />
+                </div>
+                <div className="w-100 d-flex flex-column align-items-center">
+                    {this.props.watches.watching.map((watch) => {
+                        return <Watch key={watch.classNumber} {...watch} />
+                    })}
+                </div>
             </div>
+
+
         )
     }
 }

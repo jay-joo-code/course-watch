@@ -55,7 +55,7 @@ const watches = (state = { isFetching: false, watching: [] }, action) => {
             });
 
         case "RECEIVE_WATCHES":
-            console.log('Receive watches', action.payload)
+            //console.log('Receive watches', action.payload)
             var watching = [];
             if (action.payload && action.payload.data && action.payload.data.watching) {
                 watching = action.payload.data.watching

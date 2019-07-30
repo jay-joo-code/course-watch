@@ -46,7 +46,7 @@ export const attemptGoogleSignIn = () => {
                     dispatch(fetchWatches(netID))
                 }
             })
-    } 
+    }
 }
 
 export const attemptGoogleSignOut = () => {
@@ -87,19 +87,26 @@ export const receiveWatches = (data) => {
 export const fetchWatches = (netID) => {
     return (dispatch) => {
         dispatch(requestWatches())
-        
+
         const url = `https://coursealert-api.herokuapp.com/db/user?apiKey=${apiKey}&netID=${netID}`;
-        
+
         return axios.get(url)
-            .then(response => dispatch(receiveWatches(response)))
-        
+            .then((response) => {
+                //console.log(response.data.watching[response.data.watching.length-1].available === null)
+                if (response.data && response.data.watching.length > 0 && response.data.watching[response.data.watching.length-1].available === null) {
+                    dispatch(fetchWatches(netID))
+                } else {
+                    dispatch(receiveWatches(response))
+                }
+            })
+
     }
 }
 
 export const addWatch = (netID, classNumber) => {
     return (dispatch) => {
         const url = `https://coursealert-api.herokuapp.com/api/addWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`;
-        
+
         return axios.get(url)
             .then((response) => {
                 dispatch(fetchWatches(netID))
@@ -109,6 +116,7 @@ export const addWatch = (netID, classNumber) => {
 
 export const removeWatch = (netID, classNumber) => {
     return (dispatch) => {
+        dispatch(requestWatches())
         const url = `https://coursealert-api.herokuapp.com/api/removeWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`;
         
         return axios.get(url)
