@@ -14,7 +14,11 @@ class ClassNumberInput extends React.Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
+        // reset error
         this.props.setError("");
+        // reset input
+        this.setState({ inputValue: "" });
+
         //console.log(`attempt submit: ${this.state.inputValue}`)
 
         if (isNaN(this.state.inputValue)) {
@@ -30,9 +34,10 @@ class ClassNumberInput extends React.Component {
             this.props.setError('Sign In to watch courses')
         }
         else {
-            // reset input
-            this.setState({inputValue: ""});
-            const netID = "jj534"
+            const user = this.props.user.user;
+            const email = user.email;
+            const netID = email.substring(0, email.indexOf('@'));
+            
             // add watch
             this.props.addWatch(netID, this.state.inputValue)
         }
@@ -47,7 +52,7 @@ class ClassNumberInput extends React.Component {
             <div className="mt-5 mb-5 pt-5 pb-5 w-100 d-flex flex-column align-items-center">
                 <form className="form-style" onSubmit={(e) => this.handleFormSubmit(e)}>
                     <div className="form-group d-flex flex-row input-group border-modern-dynamic">
-                        <input type="text" className="form-control input-style" id="exampleFormControlInput1" placeholder="Course ID" onChange={(e) => this.handleInputChange(e)} />
+                        <input type="text" className="form-control input-style" id="exampleFormControlInput1" placeholder="Course ID" value={this.state.inputValue} onChange={(e) => this.handleInputChange(e)} />
                         <button type="submit" className="icon-add border-modern-shallow"><i className="fas fa-plus"></i></button>
                     </div>
                 </form>
