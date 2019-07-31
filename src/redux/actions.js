@@ -32,9 +32,10 @@ export const updateUser = (user) => {
     }
 }
 
-export const attemptGoogleSignIn = () => {
+export const attemptGoogleSignInWithPopup = () => {
     return dispatch => {
         var provider = new firebase.auth.GoogleAuthProvider();
+        
         return firebase.auth().signInWithPopup(provider)
             .then((response) => {
                 dispatch(updateUser(response))
@@ -46,6 +47,18 @@ export const attemptGoogleSignIn = () => {
                     dispatch(fetchWatches(netID))
                 }
             })
+    }
+}
+
+export const attemptGoogleSignIn = () => {
+    return dispatch => {
+
+        return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            .then(function() {
+                dispatch(attemptGoogleSignInWithPopup())
+            })
+
+        
     }
 }
 
@@ -93,9 +106,10 @@ export const fetchWatches = (netID) => {
         return axios.get(url)
             .then((response) => {
                 //console.log(response.data.watching[response.data.watching.length-1].available === null)
-                if (response.data && response.data.watching.length > 0 && response.data.watching[response.data.watching.length-1].available === null) {
+                if (response.data && response.data.watching.length > 0 && response.data.watching[response.data.watching.length - 1].available === null) {
                     dispatch(fetchWatches(netID))
-                } else {
+                }
+                else {
                     dispatch(receiveWatches(response))
                 }
             })
@@ -118,7 +132,7 @@ export const removeWatch = (netID, classNumber) => {
     return (dispatch) => {
         dispatch(requestWatches())
         const url = `https://coursealert-api.herokuapp.com/api/removeWatch?apiKey=${apiKey}&classNumber=${classNumber}&netID=${netID}`;
-        
+
         return axios.get(url)
             .then((response) => {
                 dispatch(fetchWatches(netID))

@@ -36,10 +36,21 @@ class ClassNumberInput extends React.Component {
         else {
             const user = this.props.user.user;
             const email = user.email;
-            const netID = email.substring(0, email.indexOf('@'));
-            
-            // add watch
-            this.props.addWatch(netID, this.state.inputValue)
+            const domain = email.substring(email.indexOf('@')+1, email.length);
+            console.log('domain', domain)
+            if (domain !== 'cornell.edu') {
+                // not a cornell email
+                
+                console.log('NOT A CORNELL EMAIL')
+                this.props.setError('This service is only available to Cornell emails')
+            }
+            else {
+                const netID = email.substring(0, email.indexOf('@'));
+
+                // add watch
+                this.props.addWatch(netID, this.state.inputValue)
+            }
+
         }
     }
 
