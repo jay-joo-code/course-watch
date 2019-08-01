@@ -36,7 +36,7 @@ class Account extends React.Component {
         
         return (
             <div className="d-flex flex-row align-items-center justify-content-center">
-                <Avatar alt="Remy Sharp" src={photo} className="border-modern-dynamic mr-4" onClick={this.handleSignOut} />
+                <Avatar alt="Remy Sharp" src={photo} className="border-modern-dynamic mr-4 avatar" onClick={this.handleSignOut} />
                 <div className="user-info-group">
                     <p className="mb-0 font-weight-light">{name}</p>
                     <p className="mb-0 font-weight-light text-muted">{email}</p>

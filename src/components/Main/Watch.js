@@ -38,9 +38,9 @@ class Watch extends React.Component {
                         <div className="col-1 d-flex justify-content-center align-items-center p-0">
                             <span className={iconAvailabilityClass} ></span>
                         </div>
-                        <div className="col-9 d-flex flex-column justify-content-center">
-                            <p className="mb-0 "><span className="color-cornell font-weight-normal">{classNumber}</span> {subjectCode} {type} {section}</p>
-                            <p className="mb-0 text-muted">{title}</p>
+                        <div className="col-9 d-flex flex-column justify-content-center section-class-description">
+                            <p className="mb-0 class-description"><span className="color-cornell font-weight-normal">{classNumber}</span> {subjectCode} {type} {section}</p>
+                            <p className="mb-0 text-muted class-description">{title}</p>
                         </div>
                         <div className="col-2 d-flex flex-row align-items-center justify-content-center">
                             <span className="d-flex flex-row align-items-center justify-content-center"><i className="fas fa-eye mr-1 text-muted"></i><p className="watch-number mb-0 font-weight-normal">{watchNumber}</p></span>

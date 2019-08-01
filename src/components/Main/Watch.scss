@@ -29,18 +29,36 @@
     width: 20px;
     background-color: white;
     transition: background-color 300ms ease-in-out;
-    
+
 }
 
-.container-watch:hover {
+.section-class-description {
+    overflow: hidden;
+}
+
+.class-description {
+    font-size: 14px !important;
+}
+
+.container-watch:focus {
     .danger-area {
         background-color: $color-danger;
     }
 }
 
-@media (min-width: 768px) { 
+
+@media (min-width: 768px) {
     .container-watch {
         width: 50%;
     }
-    
+
+    .container-watch:hover {
+        .danger-area {
+            background-color: $color-danger;
+        }
+    }
+
+    .class-description {
+        font-size: 16px !important;
+    }
 }

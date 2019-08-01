@@ -21,6 +21,10 @@
     display: none;
 }
 
+.avatar:hover {
+    cursor: pointer;
+}
+
 @media (min-width: 768px) {
     .btn p {
         display: block;
