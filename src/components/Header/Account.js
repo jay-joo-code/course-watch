@@ -26,23 +26,22 @@ class Account extends React.Component {
                         <p className="mb-0 ml-2">Sign In with Google</p>
                     </button>
                 </div>
-                
             )
         }
         const user = this.props.user.user;
         const photo = user.photoURL;
         const name = user.displayName;
         const email = user.email;
-        
+
         return (
             <div className="d-flex flex-row align-items-center justify-content-center">
                 <Avatar alt="Remy Sharp" src={photo} className="border-modern-dynamic mr-4 avatar" onClick={this.handleSignOut} />
-                <div className="user-info-group">
+                <div className="user-info-group"> 
                     <p className="mb-0 font-weight-light">{name}</p>
                     <p className="mb-0 font-weight-light text-muted">{email}</p>
                 </div>
             </div>
-            
+
         )
     }
 }
