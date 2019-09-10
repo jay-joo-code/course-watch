@@ -41,7 +41,7 @@ const error = (state = "", action) => {
             else {
                 return state;
             }
-
+            
         default:
             return state;
     }
@@ -64,13 +64,13 @@ const watches = (state = { isFetching: false, watching: [] }, action) => {
                 isFetching: false,
                 watching,
             })
-        
+
         case "CLEAR_WATCHES":
             return Object.assign({}, state, {
                 isFetching: false,
                 watching: []
             })
-            
+
         default:
             return state;
     }

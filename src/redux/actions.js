@@ -105,13 +105,20 @@ export const fetchWatches = (netID) => {
 
         return axios.get(url)
             .then((response) => {
+                /* Update redux state with received watch data */
+                dispatch(receiveWatches(response))
+                
+                
+                //console.log(response.data)
+                //console.log(response.data.watching[response.data.watching.length-1])
+                
                 //console.log(response.data.watching[response.data.watching.length-1].available === null)
-                if (response.data && response.data.watching.length > 0 && response.data.watching[response.data.watching.length - 1].available === null) {
+                /*if (response.data && response.data.watching.length > 0 && response.data.watching[response.data.watching.length - 1].available === null) {
                     dispatch(fetchWatches(netID))
                 }
                 else {
                     dispatch(receiveWatches(response))
-                }
+                }*/
             })
 
     }

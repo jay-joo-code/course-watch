@@ -15,14 +15,12 @@ class App extends React.Component {
   render() {
     
     return (
-      <Https>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <DetectDevice />
             <Home />
           </PersistGate>
         </Provider>
-      </Https>
       )
   }
 }
