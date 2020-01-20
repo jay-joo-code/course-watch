@@ -1,6 +1,6 @@
 const stateShape = {
-    watches: {
-        isFetching: Boolean,
-        data: []
-    }
-}
+  watches: {
+    isFetching: Boolean,
+    data: [],
+  },
+};

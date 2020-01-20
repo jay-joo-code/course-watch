@@ -1,7 +1,7 @@
 const userRouter = require('express').Router();
+const generator = require('generate-password');
 const User = require('./../models/User');
 const Class = require('./../models/Class');
-var generator = require('generate-password');
 
 // GET ALL Users
 userRouter.get('/', async (req, res) => {
@@ -20,27 +20,27 @@ userRouter.post('/:uid/add-course', async (req, res) => {
     const { uid } = req.params;
     const targetClass = await Class.findOne({ classNumber });
     let user = await User.findOne({ uid });
-    
+
     if (!user) {
-      var email = generator.generate({
-          length: 10,
-          numbers: false
+      const email = generator.generate({
+        length: 10,
+        numbers: false,
       });
       await new User({ uid, email }).save();
       user = await User.findOne({ uid });
     }
-    
+
     if (!targetClass) {
-      res.status(400).send({ message: 'Course ID does not exist'})
+      res.status(400).send({ message: 'Course ID does not exist' });
     }
-    
-    let newWatching = user.watching;
+
+    const newWatching = user.watching;
     if (!newWatching.includes(targetClass._id)) {
       newWatching.push(targetClass._id);
     }
     user.watching = newWatching;
     const updatedUser = await user.save();
-    
+
     res.send(updatedUser);
   } catch (e) {
     res.status(500).send(e);
@@ -53,10 +53,10 @@ userRouter.post('/:uid/remove-course', async (req, res) => {
   try {
     const { _id } = req.body;
     const { uid } = req.params;
-    const user = await User.findOne({ uid })
-    let newWatching = user.watching;
+    const user = await User.findOne({ uid });
+    const newWatching = user.watching;
     if (newWatching.includes(_id)) {
-      newWatching.splice(newWatching.indexOf(_id), 1)
+      newWatching.splice(newWatching.indexOf(_id), 1);
     }
     user.watching = newWatching;
     const updatedUser = await user.save();
@@ -72,7 +72,7 @@ userRouter.get('/:uid', async (req, res) => {
     const { uid } = req.params;
     const user = await User.findOne({ uid }).populate('watching');
     if (!user) {
-      res.status(400).send({ message: 'User does not exist'})
+      res.status(400).send({ message: 'User does not exist' });
     }
     res.send(user);
   } catch (e) {

@@ -1,33 +1,30 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {updateDevice} from './../redux/actions';
+import { connect } from 'react-redux';
+import { updateDevice } from '../redux/actions';
 
 class DetectDevice extends React.Component {
-    constructor(props) {
-        super(props);
-        
-        this.detectDevice = this.detectDevice.bind(this);
-    }
-    
-    detectDevice() {
-        const width = document.getElementById("root").clientWidth;
-        this.props.updateDevice(width);
-      }
-      
-    render() {
-        this.detectDevice();
-        
-        return (
-            <div>
-            </div>
-            )
-    }
+  constructor(props) {
+    super(props);
+
+    this.detectDevice = this.detectDevice.bind(this);
+  }
+
+  detectDevice() {
+    const width = document.getElementById('root').clientWidth;
+    this.props.updateDevice(width);
+  }
+
+  render() {
+    this.detectDevice();
+
+    return (
+      <div />
+    );
+  }
 }
 
-const stateToProps = (state) => {
-    return {
-        
-    }
-}
+const stateToProps = (state) => ({
 
-export default connect(stateToProps, {updateDevice})(DetectDevice)
+});
+
+export default connect(stateToProps, { updateDevice })(DetectDevice);
