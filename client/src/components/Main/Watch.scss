@@ -18,7 +18,6 @@
 .container-watch {
     height: 80px;
     width: 100%;
-    cursor: pointer;
 }
 
 .watch-number {
@@ -27,9 +26,8 @@
 
 .danger-area {
     width: 20px;
-    background-color: white;
-    transition: background-color 300ms ease-in-out;
-
+    background-color: $color-danger;
+    cursor: pointer;
 }
 
 .section-class-description {
@@ -38,12 +36,6 @@
 
 .class-description {
     font-size: 14px !important;
-}
-
-.container-watch:focus {
-    .danger-area {
-        background-color: $color-danger;
-    }
 }
 
 

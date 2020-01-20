@@ -6,14 +6,12 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import DetectDevice from './components/DetectDevice';
 import './components/Core.scss';
-import Https from 'react-https-redirect';
+import axios from 'axios';
 
 const persistor = persistStore(store);
 
 class App extends React.Component {
-  
   render() {
-    
     return (
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>

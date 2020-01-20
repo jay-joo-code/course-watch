@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { attemptGoogleSignIn, attemptGoogleSignOut, clearWatches } from './../../redux/actions';
-//import firebase from './../../redux/firebase';
 import './Account.scss'
 import Avatar from '@material-ui/core/Avatar';
 

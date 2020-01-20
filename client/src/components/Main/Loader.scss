@@ -2,6 +2,10 @@
 
 $loader-dimension: 15px;
 
+.load-container {
+    margin: 20px 0;
+}
+
 .lds-circle {
     display: inline-block;
     transform: translateZ(1px);
@@ -13,8 +17,15 @@ $loader-dimension: 15px;
     height: $loader-dimension;
     margin: 0px;
     border-radius: 50%;
-    //background: $color-cornell;
     animation: lds-circle 5s ease-in-out infinite;
+}
+
+.bg-silver {
+    background-color: $color-silver;
+}
+
+.bg-cornell {
+    background-color: $color-cornell;
 }
 
 @keyframes lds-circle {
@@ -34,6 +45,3 @@ $loader-dimension: 15px;
     }
 }
 
-.loader-placeholder {
-    height: $loader-dimension;
-}

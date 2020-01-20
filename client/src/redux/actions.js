@@ -35,17 +35,9 @@ export const updateUser = (user) => {
 export const attemptGoogleSignInWithPopup = () => {
     return dispatch => {
         var provider = new firebase.auth.GoogleAuthProvider();
-        
         return firebase.auth().signInWithPopup(provider)
             .then((response) => {
                 dispatch(updateUser(response))
-                console.log('sign in attempt response', response)
-                if (response && response.user) {
-                    console.log('dispatch fetchWatches')
-                    const email = response.user.email;
-                    const netID = email.substring(0, email.indexOf("@"));
-                    dispatch(fetchWatches(netID))
-                }
             })
     }
 }
